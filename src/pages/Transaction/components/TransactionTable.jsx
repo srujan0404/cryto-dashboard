@@ -2,94 +2,96 @@ import {
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
   Stack,
   Text,
   Tag,
+  Box,
 } from "@chakra-ui/react";
+
 const TransactionTable = () => {
   const tableData = [
     {
-      id: "HD82NA2H",
-      date: "2023-06-20",
-      time: "07:00 AM",
+      id: "TXN12345",
+      date: "2023-07-01",
+      time: "09:00 AM",
       type: {
-        name: "INR Deposit",
-        tag: "E-Transfer",
+        name: "USD Deposit",
+        tag: "Bank Transfer",
       },
-      amount: "+₹81,123",
-      status: "pending",
+      amount: "+$1,200",
+      status: "completed",
     },
     {
-      id: "HD82NA4H",
-      date: "2023-06-18",
-      time: "07:00 AM",
+      id: "TXN12346",
+      date: "2023-07-02",
+      time: "10:30 AM",
       type: {
-        name: "INR Widthdraw",
-        tag: "Wire Transfer",
+        name: "ETH Withdrawal",
+        tag: "Crypto Transfer",
       },
-      amount: "-₹55,123",
+      amount: "-2.5 ETH",
       status: "processing",
     },
     {
-      id: "HD82NA5H",
-      date: "2023-06-18",
-      time: "07:00 AM",
+      id: "TXN12347",
+      date: "2023-07-03",
+      time: "02:00 PM",
       type: {
-        name: "Buy",
-        tag: "BTC",
+        name: "USD Deposit",
+        tag: "Credit Card",
       },
-      amount: "12.0554484 BTC",
-      status: "cancelled",
-    },
-    {
-      id: "HD82NA6H",
-      date: "2023-06-18",
-      time: "07:00 AM",
-      type: {
-        name: "Sell",
-        tag: "BTC",
-      },
-      amount: "-2.0554484 BTC",
-      status: "completed",
-    },
-    {
-      id: "HD82NA7H",
-      date: "2023-06-20",
-      time: "07:00 AM",
-      type: {
-        name: "BTC Deposit",
-      },
-      amount: "+15.5000000",
+      amount: "+$500",
       status: "pending",
     },
     {
-      id: "HD82NA8H",
-      date: "2023-06-18",
-      time: "07:00 AM",
+      id: "TXN12348",
+      date: "2023-07-04",
+      time: "11:15 AM",
       type: {
-        name: "BTC Widthdraw",
+        name: "BTC Purchase",
+        tag: "Crypto Exchange",
       },
-      amount: "-5.05555544",
+      amount: "0.05 BTC",
       status: "completed",
+    },
+    {
+      id: "TXN12349",
+      date: "2023-07-05",
+      time: "04:45 PM",
+      type: {
+        name: "ETH Deposit",
+        tag: "Crypto Transfer",
+      },
+      amount: "+1.0 ETH",
+      status: "completed",
+    },
+    {
+      id: "TXN12350",
+      date: "2023-07-06",
+      time: "08:00 AM",
+      type: {
+        name: "USD Withdrawal",
+        tag: "Bank Transfer",
+      },
+      amount: "-$300",
+      status: "cancelled",
     },
   ];
 
   const statusColor = {
-    pending: "#797E82",
-    processing: "#F5A50B",
-    completed: "#059669",
-    cancelled: "#DC2626",
+    pending: "#F6E05E",
+    processing: "#F687B3",
+    completed: "#48BB78",
+    cancelled: "#E53E3E",
   };
 
   return (
     <TableContainer>
-      <Table variant="simple" colorScheme="gray">
+      <Table variant="striped" colorScheme="gray" size="md">
         <Thead>
           <Tr>
             <Th>ID</Th>
@@ -99,41 +101,44 @@ const TransactionTable = () => {
             <Th>Status</Th>
           </Tr>
         </Thead>
-        <Tbody color="p.black">
+        <Tbody>
           {tableData.map((data) => (
             <Tr key={data.id}>
-              <Td fontSize="sm" fontWeight="medium">
+              <Td fontSize="md" fontWeight="semibold">
                 {data.id}
               </Td>
               <Td>
                 <Stack spacing={0}>
-                  <Text fontSize="sm" fontWeight="medium">
+                  <Text fontSize="md" fontWeight="semibold">
                     {data.date}
                   </Text>
-                  <Text fontSize="xs" color="black.60">
+                  <Text fontSize="sm" color="gray.500">
                     {data.time}
                   </Text>
                 </Stack>
               </Td>
               <Td>
-                {" "}
                 <Stack spacing={0}>
-                  <Text fontSize="sm" fontWeight="medium">
+                  <Text fontSize="md" fontWeight="semibold">
                     {data.type.name}
                   </Text>
-                  <Text fontSize="xs" color="black.60">
+                  <Text fontSize="sm" color="gray.500">
                     {data.type?.tag}
                   </Text>
                 </Stack>
               </Td>
-              <Td fontSize="sm" fontWeight="medium">
+              <Td fontSize="md" fontWeight="semibold">
                 {data.amount}
               </Td>
-              <Td fontSize="sm" fontWeight="medium">
+              <Td>
                 <Tag
                   bg={statusColor[data.status]}
                   color="white"
                   borderRadius="full"
+                  px={3}
+                  py={1}
+                  fontSize="sm"
+                  fontWeight="bold"
                 >
                   {data.status}
                 </Tag>

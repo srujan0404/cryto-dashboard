@@ -14,6 +14,7 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import TransactionTable from "./components/TransactionTable";
 import { BsSearch } from "react-icons/bs";
+
 const TransactionPage = () => {
   const tabs = [
     {
@@ -25,7 +26,7 @@ const TransactionPage = () => {
       count: 114,
     },
     {
-      name: "Widthdraw",
+      name: "Withdraw",
       count: 55,
     },
     {
@@ -36,49 +37,46 @@ const TransactionPage = () => {
 
   return (
     <DashboardLayout title="Transactions">
-      <Flex justify="end" mt="6" mb="3">
-        <Button leftIcon={<Icon as={AiOutlineDownload} />}>Export CSV</Button>
+      <Flex justify="space-between" align="center" mt="6" mb="3">
+        <HStack spacing="4">
+          {tabs.map((tab) => (
+            <Button
+              key={tab.name}
+              size="sm"
+              variant="outline"
+              colorScheme="gray"
+              borderRadius="full"
+            >
+              {tab.name}{" "}
+              <Tag ml="1" colorScheme="gray">
+                {tab.count}
+              </Tag>
+            </Button>
+          ))}
+        </HStack>
+        <InputGroup maxW="200px">
+          <InputLeftElement pointerEvents="none" color="gray.500">
+            <Icon as={BsSearch} />
+          </InputLeftElement>
+          <Input type="text" placeholder="Search..." />
+        </InputGroup>
+        <Button leftIcon={<Icon as={AiOutlineDownload} />} size="sm">
+          Export CSV
+        </Button>
       </Flex>
-      <Card borderRadius="1rem">
-        <Tabs>
-          <TabList
-            pt="4"
-            display="flex"
-            w="full"
-            justifyContent="space-between"
-          >
-            <HStack>
-              {tabs.map((tab) => (
-                <Tab key={tab.name} display="flex" gap="2" pb="4">
-                  {tab.name}{" "}
-                  <Tag colorScheme="gray" borderRadius="full">
-                    {tab.count}
-                  </Tag>
-                </Tab>
-              ))}
-            </HStack>
-
-            <InputGroup maxW="200px" pr="6">
-              <InputLeftElement pointerEvents="none">
-                <Icon as={BsSearch} />
-              </InputLeftElement>
-              <Input type="tel" placeholder="Search..." />
-            </InputGroup>
+      <Card borderRadius="xl" p="6">
+        <Tabs variant="soft-rounded">
+          <TabList>
+            {tabs.map((tab) => (
+              <Tab key={tab.name}>{tab.name}</Tab>
+            ))}
           </TabList>
-
           <TabPanels>
-            <TabPanel>
-              <TransactionTable />
-            </TabPanel>
-            <TabPanel>
-              <TransactionTable />
-            </TabPanel>
-            <TabPanel>
-              <TransactionTable />
-            </TabPanel>
-            <TabPanel>
-              <TransactionTable />
-            </TabPanel>
+            {tabs.map((tab) => (
+              <TabPanel key={tab.name}>
+                <TransactionTable type={tab.name.toLowerCase()} />
+              </TabPanel>
+            ))}
           </TabPanels>
         </Tabs>
       </Card>

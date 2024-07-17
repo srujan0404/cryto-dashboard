@@ -8,24 +8,30 @@ const DashboardLayout = ({ title, children }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   return (
-    <Flex>
-      <Box
-        display={{
-          base: "none",
-          lg: "flex",
-        }}
-      >
+    <Flex minH="100vh">
+      {/* Side Navigation - Visible on larger screens */}
+      <Box display={{ base: "none", lg: "block" }} w="250px" bg="gray.800">
         <Sidenav />
       </Box>
+
+      {/* Side Drawer - Hidden by default, visible on smaller screens */}
       <SideDrawer isOpen={isOpen} onClose={onClose} />
-      <Box flexGrow={1}>
+
+      {/* Main Content Area */}
+      <Box flex="1">
+        {/* Top Navigation Bar */}
         <TopNav title={title} onOpen={onOpen} />
+
+        {/* Main Content Container */}
         <Container
+          maxW="100%"
+          px={{ base: "4", lg: "8" }} // Adjusted padding for responsiveness
+          pt="6"
+          pb="4"
           overflowX="hidden"
           overflowY="auto"
-          h="calc(100vh - 88px)"
-          mt="6"
-          maxW="70rem"
+          minHeight="calc(100vh - 88px)" // Adjusted height calculation
+          mt={{ base: "3", lg: "0" }} // Adjusted top margin for smaller screens
         >
           {children}
         </Container>

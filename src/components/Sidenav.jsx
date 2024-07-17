@@ -3,15 +3,16 @@ import { RxDashboard } from "react-icons/rx";
 import { BsArrowDownUp } from "react-icons/bs";
 import { BiSupport } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
+
 const Sidenav = () => {
   const location = useLocation();
 
-  console.log(location);
-
+  // Function to check if a link is active based on pathname
   const isActiveLink = (link) => {
     return location.pathname === link;
   };
 
+  // Define navigation links with icons and routes
   const navLinks = [
     {
       icon: RxDashboard,
@@ -23,27 +24,29 @@ const Sidenav = () => {
       text: "Transactions",
       link: "/transactions",
     },
+    {
+      icon: BiSupport,
+      text: "Support",
+      link: "/support",
+    },
   ];
 
   return (
     <Stack
       bg="white"
       justify="space-between"
-      boxShadow={{
-        base: "none",
-        lg: "lg",
-      }}
-      w={{
-        base: "full",
-        lg: "16rem",
-      }}
+      boxShadow="lg"
+      w={{ base: "full", lg: "16rem" }} // Adjusted width for larger screens
       h="100vh"
     >
       <Box>
-        <Heading textAlign="center" fontSize="20px" as="h1" pt="3.5rem">
-          @DOSOMECODING
+        {/* Branding/Header */}
+        <Heading textAlign="center" fontSize="20px" as="h1" pt="3.5rem" pb="4">
+          SRUJAN
         </Heading>
-        <Box mt="6" mx="3">
+
+        {/* Navigation Links */}
+        <Stack spacing="1">
           {navLinks.map((nav) => (
             <Link to={nav.link} key={nav.text}>
               <HStack
@@ -64,10 +67,11 @@ const Sidenav = () => {
               </HStack>
             </Link>
           ))}
-        </Box>
+        </Stack>
       </Box>
 
-      <Box mt="6" mx="3" mb="6">
+      {/* Support Link */}
+      <Box mt="auto" mb="6" mx="3">
         <Link to="/support">
           <HStack
             borderRadius="10px"

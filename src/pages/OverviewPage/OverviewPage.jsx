@@ -1,4 +1,18 @@
-import { Box, Button, Card, Flex, Icon, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  Stack,
+  Table,
+  Tbody,
+  Td,
+  Text,
+  Th,
+  Thead,
+  Tr,
+} from "@chakra-ui/react";
 import DashboardLayout from "../../components/DashboardLayout";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import OverviewStats from "./components/OverviewStats";
@@ -8,23 +22,28 @@ const OverviewPage = () => {
   return (
     <DashboardLayout title="Overview">
       <Stack spacing="6">
-        <OverviewStats />
-        <Card borderRadius="1rem">
-          <Box p="6">
-            <Flex justify="space-between" align="center" mb="4">
-              <Text fontSize="lg" fontWeight="bold">
-                Recent Transactions
-              </Text>
-              <Button
-                rightIcon={<Icon as={AiOutlineArrowRight} />}
-                variant="link"
-              >
-                View All
-              </Button>
-            </Flex>
-            <TransactionTable type="all" />
-          </Box>
-        </Card>
+        <Box bg="white" boxShadow="md" p="6" borderRadius="xl">
+          <Heading as="h2" size="lg" mb="4" color="teal.500">
+            Overview Statistics
+          </Heading>
+          <OverviewStats />
+        </Box>
+
+        <Box bg="white" boxShadow="md" p="6" borderRadius="xl">
+          <Flex justify="space-between" align="center" mb="4">
+            <Heading as="h2" size="lg" color="teal.500">
+              Recent Transactions
+            </Heading>
+            <Button
+              rightIcon={<Icon as={AiOutlineArrowRight} />}
+              variant="link"
+              color="teal.500"
+            >
+              View All
+            </Button>
+          </Flex>
+          <TransactionTable type="all" />
+        </Box>
       </Stack>
     </DashboardLayout>
   );

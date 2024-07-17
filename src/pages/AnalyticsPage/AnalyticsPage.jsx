@@ -1,28 +1,36 @@
-import { Box, Card, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Card,
+  Grid,
+  GridItem,
+  Heading,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import DashboardLayout from "../../components/DashboardLayout";
 import AnalyticsChart from "./components/AnalyticsChart";
 
 const AnalyticsPage = () => {
   return (
     <DashboardLayout title="Analytics">
-      <Stack spacing="6">
-        <Card borderRadius="1rem">
-          <Box p="6">
-            <Text fontSize="lg" fontWeight="bold" mb="4">
+      <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={6}>
+        <GridItem>
+          <Card borderRadius="1rem" boxShadow="md" p="6">
+            <Heading as="h3" size="md" mb="4" color="teal.500">
               Transaction Volume
-            </Text>
+            </Heading>
             <AnalyticsChart type="volume" />
-          </Box>
-        </Card>
-        <Card borderRadius="1rem">
-          <Box p="6">
-            <Text fontSize="lg" fontWeight="bold" mb="4">
+          </Card>
+        </GridItem>
+        <GridItem>
+          <Card borderRadius="1rem" boxShadow="md" p="6">
+            <Heading as="h3" size="md" mb="4" color="teal.500">
               Revenue
-            </Text>
+            </Heading>
             <AnalyticsChart type="revenue" />
-          </Box>
-        </Card>
-      </Stack>
+          </Card>
+        </GridItem>
+      </Grid>
     </DashboardLayout>
   );
 };

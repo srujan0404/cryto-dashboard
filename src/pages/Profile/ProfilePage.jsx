@@ -5,6 +5,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  Heading,
   Input,
   Stack,
   Text,
@@ -17,11 +18,11 @@ const ProfilePage = () => {
     <DashboardLayout title="Profile">
       <Stack spacing="6">
         <ProfileCard />
-        <Card borderRadius="1rem">
-          <Box p="6">
-            <Text fontSize="lg" fontWeight="bold" mb="4">
+        <Card borderRadius="xl" boxShadow="md" p="6">
+          <Stack spacing="6">
+            <Heading as="h2" size="lg" mb="4" color="teal.500">
               Edit Profile
-            </Text>
+            </Heading>
             <Stack spacing="4">
               <FormControl>
                 <FormLabel>Name</FormLabel>
@@ -35,11 +36,13 @@ const ProfilePage = () => {
                 <FormLabel>Password</FormLabel>
                 <Input type="password" placeholder="Your Password" />
               </FormControl>
-              <Flex justify="end">
-                <Button colorScheme="blue">Save Changes</Button>
+              <Flex justify="flex-end">
+                <Button colorScheme="teal" variant="solid">
+                  Save Changes
+                </Button>
               </Flex>
             </Stack>
-          </Box>
+          </Stack>
         </Card>
       </Stack>
     </DashboardLayout>

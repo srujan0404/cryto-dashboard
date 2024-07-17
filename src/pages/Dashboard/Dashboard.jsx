@@ -5,7 +5,7 @@ import PriceSection from "./components/PriceSection";
 import Transactions from "./components/Transactions";
 import InfoCard from "./components/InfoCard";
 
-const Dashboard = ({}) => {
+const Dashboard = () => {
   return (
     <DashboardLayout title="Dashboard">
       <Grid
@@ -34,10 +34,10 @@ const Dashboard = ({}) => {
         </GridItem>
         <GridItem colSpan={1}>
           <InfoCard
-            inverted={true}
-            tagText="Contact"
             imgUrl="/grid_bg.svg"
             text="Learn more about our real estate, mortgage, and corporate account services"
+            tagText="Contact"
+            inverted={true}
           />
         </GridItem>
       </Grid>

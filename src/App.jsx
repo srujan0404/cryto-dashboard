@@ -1,28 +1,21 @@
-import Dashboard from "./pages/Dashboard/Dashboard";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Support from "./pages/Support/Support";
 import TransactionPage from "./pages/Transaction/Transaction";
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Dashboard />,
-  },
-  {
-    path: "/transactions",
-    element: <TransactionPage />,
-  },
-  {
-    path: "/support",
-    element: <Support />,
-  },
-]);
 
 function App() {
   return (
-    <>
-      <RouterProvider router={router} />
-    </>
+    <ChakraProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/transactions" element={<TransactionPage />} />
+          <Route path="/support" element={<Support />} />
+        </Routes>
+      </Router>
+    </ChakraProvider>
   );
 }
 

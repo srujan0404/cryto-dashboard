@@ -1,4 +1,5 @@
-import { Box, SimpleGrid, Stat, StatLabel, StatNumber } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
+import StatCard from "./StatCard";
 
 const OverviewStats = () => {
   return (
@@ -10,21 +11,5 @@ const OverviewStats = () => {
     </SimpleGrid>
   );
 };
-
-const StatCard = ({ label, value }) => (
-  <Box
-    p="6"
-    border="1px"
-    borderColor="gray.200"
-    borderRadius="lg"
-    bg="white"
-    shadow="sm"
-  >
-    <Stat>
-      <StatLabel>{label}</StatLabel>
-      <StatNumber>{value}</StatNumber>
-    </Stat>
-  </Box>
-);
 
 export default OverviewStats;

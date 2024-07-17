@@ -4,12 +4,12 @@ import ContactCard from "./components/ContactCard";
 import SupportCard from "./components/SupportCard";
 import { AiTwotoneMessage } from "react-icons/ai";
 import InfoCard from "../Dashboard/components/InfoCard";
-import { Stack, Box } from "@chakra-ui/react";
+import { Stack, Box, Text, Button } from "@chakra-ui/react";
 
 const Support = () => {
   return (
     <DashboardLayout>
-      <Stack spacing={10} align="center">
+      <Stack spacing={12} align="center" maxW="6xl" mx="auto" px={4} py={8}>
         <SupportCard
           icon={IoMdMail}
           leftComponent={<ContactCard />}
@@ -22,15 +22,15 @@ const Support = () => {
             <Box
               p={8}
               borderRadius="lg"
-              bg="purple.50"
-              boxShadow="md"
+              bg="white"
+              boxShadow="lg"
               textAlign="center"
             >
               <InfoCard
                 inverted={true}
                 tagText="Contact"
                 imgUrl="/grid_bg.svg"
-                text="Learn more about our real estate, mortgage, and corporate account services"
+                text="Learn more about our real estate, mortgage, and corporate account services."
               />
             </Box>
           }
@@ -38,18 +38,18 @@ const Support = () => {
           text="Don’t have time to wait for the answer? Chat with us now."
         />
         <Box
-          p={8}
+          p={10}
           borderRadius="lg"
-          bg="gray.50"
+          bg="white"
           boxShadow="lg"
           textAlign="center"
-          maxW="500px"
+          maxW="lg"
           w="full"
         >
-          <Text fontWeight="bold" fontSize="xl" color="gray.800">
+          <Text fontWeight="bold" fontSize="2xl" color="gray.800">
             FAQ
           </Text>
-          <Text fontSize="md" color="gray.600" mt={4}>
+          <Text fontSize="lg" color="gray.600" mt={4}>
             Check out our frequently asked questions for quick answers to your
             queries.
           </Text>

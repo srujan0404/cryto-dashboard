@@ -9,18 +9,13 @@ const Dashboard = ({}) => {
   return (
     <DashboardLayout title="Dashboard">
       <Grid
-        gridTemplateColumns={{
+        templateColumns={{
           base: "repeat(1, 1fr)",
           xl: "repeat(2, 1fr)",
         }}
-        gap="6"
+        gap={6}
       >
-        <GridItem
-          colSpan={{
-            base: 1,
-            xl: 2,
-          }}
-        >
+        <GridItem colSpan={{ base: 1, xl: 2 }}>
           <PortfolioSection />
         </GridItem>
         <GridItem colSpan={1}>
@@ -32,8 +27,7 @@ const Dashboard = ({}) => {
         <GridItem colSpan={1}>
           <InfoCard
             imgUrl="/dot_bg.svg"
-            text=" Learn more about Loans – Keep your Bitcoin, access it’s value without
-          selling it"
+            text="Learn more about Loans – Keep your Bitcoin, access its value without selling it"
             tagText="Loan"
             inverted={false}
           />
@@ -43,7 +37,7 @@ const Dashboard = ({}) => {
             inverted={true}
             tagText="Contact"
             imgUrl="/grid_bg.svg"
-            text="Learn more about our real estate, mortgage, and  corporate account services"
+            text="Learn more about our real estate, mortgage, and corporate account services"
           />
         </GridItem>
       </Grid>

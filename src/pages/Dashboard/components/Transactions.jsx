@@ -7,6 +7,7 @@ import {
   Icon,
   Stack,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { CustomCard } from "../../../chakra/CustomCard";
 import { BsCurrencyRupee } from "react-icons/bs";
@@ -25,7 +26,7 @@ const Transactions = () => {
     {
       id: "2",
       icon: FaBtc,
-      text: "BTC  Sell",
+      text: "BTC Sell",
       amount: "- 12.48513391 BTC",
       timestamp: "2022-06-09 7:06 PM",
     },
@@ -38,38 +39,53 @@ const Transactions = () => {
     },
   ];
 
+  const cardBg = useColorModeValue("gray.800", "gray.700");
+  const iconBg = useColorModeValue("gray.600", "gray.600");
+  const textColor = useColorModeValue("whiteAlpha.900", "whiteAlpha.900");
+  const timestampColor = useColorModeValue("whiteAlpha.700", "whiteAlpha.700");
+
   return (
-    <CustomCard h="full">
-      <Text mb="6" fontSize="sm" color="black.80">
+    <CustomCard
+      bg={cardBg}
+      p={6}
+      borderRadius="lg"
+      boxShadow="lg"
+      color={textColor}
+    >
+      <Text mb={6} fontSize="lg" fontWeight="bold">
         Recent Transactions
       </Text>
       <Stack spacing={4}>
         {transactions.map((transaction, i) => (
           <Fragment key={transaction.id}>
-            {i !== 0 && <Divider />}
-            <Flex gap="4">
+            {i !== 0 && <Divider borderColor={timestampColor} />}
+            <Flex gap={4} align="center">
               <Grid
                 placeItems="center"
-                bg="black.5"
+                bg={iconBg}
                 boxSize={10}
                 borderRadius="full"
               >
-                <Icon as={transaction.icon} />
+                <Icon as={transaction.icon} color="white" />
               </Grid>
               <Flex justify="space-between" w="full">
                 <Stack spacing={0}>
-                  <Text textStyle="h6">{transaction.text}</Text>
-                  <Text fontSize="sm" color="black.40">
+                  <Text fontSize="md" fontWeight="bold">
+                    {transaction.text}
+                  </Text>
+                  <Text fontSize="sm" color={timestampColor}>
                     {transaction.timestamp}
                   </Text>
                 </Stack>
-                <Text textStyle="h6">{transaction.amount}</Text>
+                <Text fontSize="md" fontWeight="bold">
+                  {transaction.amount}
+                </Text>
               </Flex>
             </Flex>
           </Fragment>
         ))}
       </Stack>
-      <Button w="full" mt="6" colorScheme="gray">
+      <Button w="full" mt={6} colorScheme="blue">
         View All
       </Button>
     </CustomCard>

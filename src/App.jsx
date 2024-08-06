@@ -14,7 +14,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/transactions" element={<TransactionPage />} />
           <Route path="/support" element={<Support />} />
-          <Route path="/transaction-stats" element={<TransactionStatsPage />}
+          <Route path="/transaction-stats" element={<TransactionStatsPage />} />
         </Routes>
       </Router>
     </ChakraProvider>

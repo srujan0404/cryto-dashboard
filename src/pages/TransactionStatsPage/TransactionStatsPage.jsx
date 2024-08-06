@@ -1,5 +1,5 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import StatCard from "./StatCard"; 
+import StatCard from "../StatCard/StatCard"; 
 
 const TransactionStatsPage = () => {
   return (
